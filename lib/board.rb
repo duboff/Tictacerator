@@ -8,7 +8,7 @@ class Board
 
   def initialize
     @size = BOARD_SIZE
-    @cells = Array.new(size ** 2, Cell.new)
+    @cells = Array.new(size ** 2) { Cell.new }
   end
 
   def rows
@@ -21,6 +21,18 @@ class Board
 
   def diagonals
     [rows, rows.reverse].map {|rows| (0...@size).map { |i| rows[i][i] } }
+  end
+
+  def empty?
+    cells.all?(&:empty?)
+  end
+
+  def won?
+    # [rows, columns, diagonals].any? do |group|
+    #   group.any? { |member| [0,3].include?(member.map(&:value).inject(:+)) }
+    # end
+
+    rows.any? { |row| [[0],[1]].include?(row.map(&:value).uniq) }
   end
 
 end
