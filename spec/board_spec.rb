@@ -27,7 +27,7 @@ describe Board do
 
   context 'status' do
     it 'empty on creation' do
-      expect(board).to be_empty      
+      expect(board).to be_empty
     end
     it 'registers a row win' do
       expect(board).not_to be_won
@@ -36,10 +36,25 @@ describe Board do
     end
 
     it 'registers a column win' do
-      expect(board).to be_empty
+      expect(board).not_to be_won
       board.columns.first.each { |cell| cell.value = 0}
       expect(board).to be_won
     end
+
+    it 'registers a diagonal win' do
+      expect(board).not_to be_won
+      board.diagonals.last.each { |cell| cell.value = 0}
+      expect(board).to be_won
+    end
+
+    it 'doesn not register a win when there is no win' do
+      expect(board).not_to be_won
+      board.cells.first.value = 1
+      board.cells[1].value = 1
+      board.cells[2].value = 0
+      expect(board).not_to be_won
+    end
+
 
 
   end
