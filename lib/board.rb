@@ -20,7 +20,11 @@ class Board
   end
 
   def diagonals
-  [] << (0...@size).map { |i| rows[i][i] } << (0...@size).map { |i| rows.reverse[i][i] }
+    [rows, rows.reverse].map {|rows| get_diagonal(rows)}
+  end
+
+  def get_diagonal(rows)
+    (0...@size).map { |i| rows[i][i] }
   end
 
 end
