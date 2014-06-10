@@ -28,11 +28,9 @@ class Board
   end
 
   def won?
-    # [rows, columns, diagonals].any? do |group|
-    #   group.any? { |member| [0,3].include?(member.map(&:value).inject(:+)) }
-    # end
-
-    rows.any? { |row| [[0],[1]].include?(row.map(&:value).uniq) }
+    [rows, columns, diagonals].any? do |group|
+      group.any? { |member| [[0],[1]].include?(member.map(&:value).uniq) }
+    end
   end
 
 end

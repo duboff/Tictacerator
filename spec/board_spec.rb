@@ -35,12 +35,11 @@ describe Board do
       expect(board).to be_won
     end
 
-    # it 'registers a column win' do
-    #   expect(board).to be_empty
-    #   # board.columns.first.each { |cell| cell.value = 0}
-    #   p board.cells.map(&:value)
-    #   expect(board).to be_won
-    # end
+    it 'registers a column win' do
+      expect(board).to be_empty
+      board.columns.first.each { |cell| cell.value = 0}
+      expect(board).to be_won
+    end
 
 
   end
