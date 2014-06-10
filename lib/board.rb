@@ -33,4 +33,8 @@ class Board
     end
   end
 
+  def drawn?
+    !won? && cells.none? { |cell| cell.value.nil? }
+  end
+
 end

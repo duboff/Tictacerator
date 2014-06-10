@@ -55,6 +55,13 @@ describe Board do
       expect(board).not_to be_won
     end
 
+    it 'registers a draw' do
+      draw = [1,0,1,0,1,1,0,1,0]
+      board.cells.each_with_index {|cell,i| cell.value = draw[i]}
+      expect(board).not_to be_won
+      expect(board).to be_drawn
+    end
+
 
 
   end
