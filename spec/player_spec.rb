@@ -53,12 +53,19 @@ describe HumanPlayer do
 end
 
 describe ComputerPlayer do
+  let(:board) {Board.new}
+  let(:player) { ComputerPlayer.new(board, :x) }
+  let(:cell) {player.board.cells.first}
+  let(:filled_cell) {player.board.cells.last}
+
   context 'still a player' do
     it_behaves_like 'a player' do
-      let(:board) {Board.new}
-      let(:player) { ComputerPlayer.new(board, :x) }
-      let(:cell) {player.board.cells.first}
-      let(:filled_cell) {player.board.cells.last}
+    end
+  end
+  context 'basic functionality' do
+    it 'knows available cells' do
+      (0..6).each {|num| player.board.cells[num].value = 0}
+      expect(player.available_cells).to eq player.board.cells[7,8]
     end
   end
 end

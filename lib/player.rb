@@ -22,5 +22,7 @@ class HumanPlayer < Player
 end
 
 class ComputerPlayer < Player
-
+  def available_cells
+    board.cells.select(&:empty?)
+  end
 end
