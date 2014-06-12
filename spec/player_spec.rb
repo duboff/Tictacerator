@@ -19,6 +19,14 @@ shared_examples_for 'a player' do
     expect(player.board.cells.first.value).to eq 1
     expect(cell.value).to eq 1
   end
+
+  it 'can only move if the space is empty' do
+    filled_cell.value = 0
+    expect(filled_cell.value).to eq 0
+    player.move(filled_cell)
+    expect(player.board.cells.last.value).to eq 0
+    expect(filled_cell.value).to eq 0
+  end
 end
 
 
@@ -28,6 +36,7 @@ describe Player do
     let(:board) {Board.new}
     let(:player) { Player.new(board, :x) }
     let(:cell) {player.board.cells.first}
+    let(:filled_cell) {player.board.cells.last}
   end
 
 end
@@ -38,6 +47,7 @@ describe HumanPlayer do
       let(:board) {Board.new}
       let(:player) { HumanPlayer.new(board, :x) }
       let(:cell) {player.board.cells.first}
+      let(:filled_cell) {player.board.cells.last}
     end
   end
 end
@@ -48,6 +58,7 @@ describe ComputerPlayer do
       let(:board) {Board.new}
       let(:player) { ComputerPlayer.new(board, :x) }
       let(:cell) {player.board.cells.first}
+      let(:filled_cell) {player.board.cells.last}
     end
   end
 end

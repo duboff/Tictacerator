@@ -13,7 +13,7 @@ class Player
   end
 
   def move(cell)
-    cell.value = mark
+    cell.value = mark if cell.empty?
   end
 end
 
