@@ -17,14 +17,22 @@ class Player
   def move(cell)
     cell.value = mark if cell.empty?
   end
+
+  def type
+  end
 end
 
 class HumanPlayer < Player
-
+  def type
+    :human
+  end
 end
 
 class ComputerPlayer < Player
   def available_cells
     board.cells.select(&:empty?)
+  end
+  def type
+    :computer
   end
 end
