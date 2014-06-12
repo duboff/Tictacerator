@@ -61,9 +61,7 @@ describe Board do
       expect(board).not_to be_won
       expect(board).to be_drawn
     end
-
-
-
   end
+
 
 end

@@ -2,7 +2,7 @@ require_relative "./cell.rb"
 
 class Board
 
-  attr_reader :cells, :size
+  attr_reader :cells, :size, :players
 
   BOARD_SIZE = 3
 
