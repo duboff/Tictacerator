@@ -12,3 +12,6 @@ class Player
     piece == :x ? 1 : 0
   end
 end
+
+class HumanPlayer < Player
+end
