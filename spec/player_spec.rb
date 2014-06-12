@@ -33,3 +33,12 @@ describe HumanPlayer do
     end
   end
 end
+
+describe ComputerPlayer do
+  context 'still a player' do
+    it_behaves_like 'a player' do
+      let(:board) {Board.new}
+      let(:player) { ComputerPlayer.new(board, :x) }
+    end
+  end
+end
