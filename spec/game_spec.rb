@@ -15,4 +15,12 @@ describe Game do
       expect(game.players.map(&:type).count(:human)).to eq 1
     end
   end
+
+  context 'Board' do
+    it 'should have a board on creation' do
+      expect(game.board.class).to eq Board
+    end
+  end
+
+
 end
