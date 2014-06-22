@@ -20,6 +20,13 @@ describe Game do
     it 'should have a board on creation' do
       expect(game.board.class).to eq Board
     end
+    it 'initially board is empty' do
+      expect(game.board).to be_empty
+    end
+    it 'game is over when board is won' do
+      game.board.rows.first.each { |cell| cell.value = 1 }
+      expect(game).to be_over
+    end
   end
 
 
