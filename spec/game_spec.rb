@@ -29,5 +29,12 @@ describe Game do
     end
   end
 
+  context 'Winner' do
+    it 'has a winner when the board is won' do
+      game.board.rows.first.each { |cell| cell.value = 1 }
+      expect(game.winner).not_to be_nil
+    end
+  end
+
 
 end

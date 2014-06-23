@@ -7,6 +7,12 @@ class Game
   end
 
   def over?
-  	board.won? || board.drawn?
+    board.won? || board.drawn?
   end
+
+  def winner
+    return players.first if board.winner == 1
+    return players.last if board.winner == 0
+  end
+
 end

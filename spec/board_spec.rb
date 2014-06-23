@@ -63,5 +63,16 @@ describe Board do
     end
   end
 
+  context 'winning' do
+    it 'know the winner' do
+      board.rows.first.each { |cell| cell.value = 1 }
+      expect(board.winner).to eq 1
+    end
+    it 'know the winner' do
+      board.rows.first.each { |cell| cell.value = 0 }
+      expect(board.winner).to eq 0
+    end
+  end
+
 
 end
