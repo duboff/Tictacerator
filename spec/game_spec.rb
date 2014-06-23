@@ -1,4 +1,7 @@
 require 'game'
+require 'board'
+require 'cell'
+require 'player'
 
 describe Game do
 
@@ -32,7 +35,21 @@ describe Game do
   context 'Winner' do
     it 'has a winner when the board is won' do
       game.board.rows.first.each { |cell| cell.value = 1 }
-      expect(game.winner).not_to be_nil
+      expect(game.winner).to eq game.players.first
+    end
+    it 'has no winner when board is drawn' do
+      draw = [1,0,1,0,1,1,0,1,0]
+      game.board.cells.each_with_index {|cell,i| cell.value = draw[i]}
+      expect(game.winner).to be_nil
+    end
+  end
+
+  context 'Playing' do
+    it 'players can put pieces on board' do
+      player = game.players.first
+      cell = game.board.cells.first
+      game.move(player, cell)
+      expect(game.board.cells.first.value).to eq 1
     end
   end
 

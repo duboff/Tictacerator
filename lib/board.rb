@@ -44,4 +44,8 @@ class Board
     return 0 if te.any? { |member| member.map(&:value).uniq == [0] }
   end
 
+  def place(piece, cell)
+    cell.value = piece
+  end
+
 end

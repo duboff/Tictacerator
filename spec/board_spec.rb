@@ -74,5 +74,13 @@ describe Board do
     end
   end
 
+  context 'placing pieces' do
+    it 'board changes cell values when a piece is placed' do
+      cell = board.cells.first
+      board.place(1,cell)
+      expect(board.cells.first.value).to eq 1
+    end
+  end
+
 
 end
