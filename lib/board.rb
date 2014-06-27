@@ -6,9 +6,9 @@ class Board
 
   BOARD_SIZE = 3
 
-  def initialize
+  def initialize(cells = Array.new(BOARD_SIZE ** 2) { Cell.new })
     @size = BOARD_SIZE
-    @cells = Array.new(size ** 2) { Cell.new }
+    @cells = cells
   end
 
   def rows

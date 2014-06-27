@@ -1,9 +1,9 @@
 class Game
   attr_reader :players, :board
 
-  def initialize
+  def initialize(players = [HumanPlayer.new(board, :x), ComputerPlayer.new(board, :o)])
     @board = Board.new
-    @players = [HumanPlayer.new(board, :x), ComputerPlayer.new(board, :o)]
+    @players = players
   end
 
   def over?
