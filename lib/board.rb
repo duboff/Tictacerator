@@ -45,7 +45,7 @@ class Board
   end
 
   def place(piece, cell)
-    cell.value = piece
+    cell.value = piece if cell.empty?
   end
 
 end

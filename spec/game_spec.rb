@@ -42,15 +42,31 @@ describe Game do
       game.board.cells.each_with_index {|cell,i| cell.value = draw[i]}
       expect(game.winner).to be_nil
     end
+    it 'game scores itself on win' do
+      expect(game.players.first.score).to eq 0
+      expect(game.players.last.score).to eq 0
+      game.board.rows.first.each { |cell| cell.value = 1 }
+      game.score
+      expect(game.players.first.score).to eq 1
+      expect(game.players.last.score).to eq -1
+    end
   end
 
   context 'Playing' do
-    it 'players can put pieces on board' do
-      player = game.players.first
-      cell = game.board.cells.first
-      game.move(player, cell)
-      expect(game.board.cells.first.value).to eq 1
+
+    it 'first players turn on creation' do
+      expect(game.next_turn).to eq game.players.first
     end
+
+    it 'changes turn on move' do
+      cell = game.board.cells.first
+      game.players.first.move(cell)
+      expect(game.next_turn).to eq game.players.last
+      cell = game.board.cells.last
+      game.players.first.move(cell)
+      expect(game.next_turn).to eq game.players.first
+    end
+
   end
 
 

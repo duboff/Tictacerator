@@ -2,12 +2,13 @@ require 'board'
 
 class Player
 
-  attr_accessor :board
+  attr_accessor :board, :score
   attr_reader :piece
 
   def initialize(board, piece)
     @board = board
     @piece = piece
+    @score = 0
   end
 
   def mark
@@ -15,7 +16,7 @@ class Player
   end
 
   def move(cell)
-    cell.value = mark if cell.empty?
+    board.place(mark,cell)
   end
 
   def type
@@ -26,6 +27,7 @@ class HumanPlayer < Player
   def type
     :human
   end
+
 end
 
 class ComputerPlayer < Player
