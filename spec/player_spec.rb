@@ -42,15 +42,23 @@ describe Player do
 end
 
 describe HumanPlayer do
+  let(:board) {Board.new}
+  let(:player) { HumanPlayer.new(board, :x) }
+
   context 'still a player' do
-    it_behaves_like 'a player' do
-      let(:board) {Board.new}
-      let(:player) { HumanPlayer.new(board, :x) }
       let(:cell) {player.board.cells.first}
       let(:filled_cell) {player.board.cells.last}
     end
-  end
+
+  # context 'placing piece' do
+  #   it 'can place a piece on the board' do
+  #     coords = [1,1]
+  #     player.move(coords)
+  #     expect(player.board.rows[coords.first][coords.last].value).to eq 1
+  #   end
+  # end
 end
+
 
 describe ComputerPlayer do
   let(:board) {Board.new}
